@@ -2,6 +2,11 @@
 
 static const char CONFIG_PATHNAME[100] = ".magic_bar";
 
+int run_command(char *cmd)
+{
+    return system(cmd);
+}
+
 int main (__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 {
     const t_config  config = parse_config(CONFIG_PATHNAME);
