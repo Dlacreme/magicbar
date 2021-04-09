@@ -5,4 +5,4 @@
 
 int run_command(char*);
 
-#endif /* magic_bar_h */
+#endif
