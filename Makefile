@@ -8,6 +8,7 @@ RM	:= rm -rf
 
 SRC =	magic_bar.c \
 		config.c	\
+		parser.c	\
 		runner.c
 
 OBJS = $(SRC:.c=.o)

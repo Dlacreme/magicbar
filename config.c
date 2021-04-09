@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
-#include "include/config.h"
+#include "include/magic_bar.h"
+
+t_config_parser_item    *get_parser();
 
 const char    *get_config_pathname(const char *pathname)
 {
@@ -14,13 +16,21 @@ const char    *get_config_pathname(const char *pathname)
     return path;
 }
 
-int    parse_line(t_config *config, char *line)
+int parse_line(t_config_parser_item **parser, t_config *config, char *line)
 {
+    t_config_parser_item *parser_item = *parser;
+    while (parser_item) {
+        if (strstr(line, parser_item->key) != NULL) {
+            parser_item->handler(config, line);
+        }
+        parser_item = parser_item->next;
+    }
     return 0;
 }
 
 void free_key_bin_list(t_key_bin* list_head)
 {
+    // TODO: free list
     return;
 }
 
@@ -39,20 +49,21 @@ void clean_config(t_config config)
 
 t_config parse_config(const char *pathname)
 {
+    t_config_parser_item *parser;
     t_config    config = {NULL,NULL,NULL};
     FILE     *fd;
     char    *line = NULL;
     size_t  len = 0;
     ssize_t read;
 
-
+    parser = get_parser();
     fd = fopen(/* TODO: it fails? get_config_pathname(pathname) */ "/home/dlacreme/.magic_bar", "r");
     if (fd == NULL) {
         printf("Error opening '%s' ; ERROR=%d\n", get_config_pathname(pathname), errno);
         exit(EXIT_FAILURE);
     }
     while ((read = getline(&line, &len, fd)) != -1) {
-        if (parse_line(&config, line) == -1) {
+        if (parse_line(&parser, &config, line) == -1) {
             printf("Invalid line on config file:\n%s\n\n", line);
             clean_config(config);
             exit(EXIT_FAILURE);

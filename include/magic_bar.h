@@ -2,6 +2,8 @@
 #define magic_bar_h
 
 #include <gtk/gtk.h>
+#include "config.h"
+#include "parser.h"
 
 int run_command(char*);
 
