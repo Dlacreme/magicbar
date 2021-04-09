@@ -2,7 +2,7 @@
 #define config_h
 
 struct s_key_bin;
-// key bin stores a command and it's matching shortcut; used as linked list
+// key bin stores a command and its matching shortcut; used as linked list
 typedef struct s_key_bin {
     char    *command;
     char    *shortcut;
