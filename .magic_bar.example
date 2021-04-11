@@ -1,5 +1,19 @@
-submit: [enter]
-default: [terminal]
-favorites:
-[f]->firefox
-[v]->visualcode
+MAGIC BAR FILE EXAMPLE
+Format:
+ - Shortcut must be delimited with '[' and ']'
+ - Command must be delimited with double quotes (`"`)
+Any invalid lines are ignored by the parser.
+
+@doc"""
+Define the default command to "terminal".
+ (REQUIRED for now - set it to "" if you don't use it)
+"""
+default: "terminal"
+
+@doc"""
+Define the list of favorites using the format [key]->"command"
+"""
+[f]->"firefox"
+[v]->"visualcode"
+
+Run `echo 'default: ""' > ~/.magic_bar` for a default valid file
