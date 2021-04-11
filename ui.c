@@ -40,7 +40,6 @@ static void activate(GtkApplication *app, gpointer ptr_data)
 
 static void key_press(GtkEntry *input, gpointer ptr_data)
 {
-    g_print("SUBMIT !!");
     t_gtk_callback_data *data = (t_gtk_callback_data*)ptr_data;
     data->command = get_input_content(GTK_WIDGET(input));
     data->callback(data->command);
@@ -52,7 +51,7 @@ GtkWidget* build_window(GtkApplication *app)
     GtkWidget *window;
 
     window = gtk_application_window_new(app);
-    gtk_window_set_default_size(GTK_WINDOW(window), 100, 400);
+    gtk_window_set_default_size(GTK_WINDOW(window), 200, 800);
 
     return window;
 }
