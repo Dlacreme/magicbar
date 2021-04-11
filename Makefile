@@ -1,14 +1,14 @@
 NAME = magic_bar
-CC ?= gcc
+CC = clang
 PKGCONFIG = $(shell which pkg-config)
-CFLAGS = $(shell $(PKGCONFIG) --cflags gtk+-3.0)
-LIBS = $(shell $(PKGCONFIG) --libs gtk+-3.0)
+CFLAGS = $(shell $(PKGCONFIG) --cflags gtk4)
+LIBS = $(shell $(PKGCONFIG) --libs gtk4)
 RM	:= rm -rf
-
 
 SRC =	magic_bar.c \
 		config.c	\
-		parser.c
+		parser.c	\
+		ui.c
 
 OBJS = $(SRC:.c=.o)
 

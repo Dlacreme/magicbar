@@ -4,6 +4,7 @@
 #include <gtk/gtk.h>
 #include "config.h"
 #include "parser.h"
+#include "ui.h"
 
 int run_command(char*);
 

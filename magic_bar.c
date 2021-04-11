@@ -7,8 +7,10 @@ int run_command(char *cmd)
     return system(cmd);
 }
 
-int main (__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
+int main(int argc, char **argv)
 {
-    const t_config  config = parse_config(CONFIG_PATHNAME);
+    t_config  config = parse_config(CONFIG_PATHNAME);
+    t_gtk_ui  ui = setup_ui();
+    start_ui(&ui, argc, argv, &config);
     return run_command(config.default_command);
 }

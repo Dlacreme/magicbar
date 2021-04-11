@@ -34,21 +34,45 @@ t_config_parser_item    *get_parser()
     return def;
 }
 
-
 void default_handler(t_config *config, char *line)
 {
-    printf("Handler default");
-    return;
+    int i = 0;
+    char *default_command;
+    while (*line && *line != '"') {
+        line++;
+    }
+    default_command = malloc(sizeof(char) * strlen(line) + 1);
+    while (*line) {
+        if (*line != '"') {
+            default_command[i] = *line;
+            i++;
+        }
+        line++;
+    }
+    config->submit = default_command;
 }
 
 void submit_handler(t_config *config, char *line)
 {
-    printf("Handle submit");
+    int i = 0;
+    char *default_command;
+    while (*line && *line != '[') {
+        line++;
+    }
+    default_command = malloc(sizeof(char) * strlen(line) + 1);
+    while (*line) {
+        if (*line != '[' && *line != ']') {
+            default_command[i] = *line;
+            i++;
+        }
+        line++;
+    }
+    config->default_command = default_command;
     return;
 }
 
 void favorite_handler(t_config *config, char *line)
 {
-    printf("Handle favorite");
+    printf("FAVORITE > [%s]\n", line);
     return;
 }
