@@ -10,9 +10,7 @@ const char    *get_config_pathname(const char *pathname)
 {
     char* homepath = getenv("HOME");
     char* path = malloc((strlen(pathname) + strlen(homepath) + 2) * sizeof(char));
-    strcat(path, homepath);
-    strcat(path + strlen(homepath), "/");
-    strcat(path + strlen(homepath) + 1, pathname);
+    sprintf(path, "%s/%s", homepath, pathname);
     return path;
 }
 
@@ -57,7 +55,7 @@ t_config parse_config(const char *pathname)
     ssize_t read;
 
     parser = get_parser();
-    fd = fopen(/* TODO: it fails? get_config_pathname(pathname) */ "/home/dlacreme/.magic_bar", "r");
+    fd = fopen(get_config_pathname(pathname), "r");
     if (fd == NULL) {
         printf("Error opening '%s' ; ERROR=%d\n", get_config_pathname(pathname), errno);
         exit(EXIT_FAILURE);
