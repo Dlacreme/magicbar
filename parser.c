@@ -43,31 +43,31 @@ void default_handler(t_config *config, char *line)
     }
     default_command = malloc(sizeof(char) * strlen(line) + 1);
     while (*line) {
-        if (*line != '"') {
-            default_command[i] = *line;
-            i++;
-        }
-        line++;
-    }
-    config->submit = default_command;
-}
-
-void submit_handler(t_config *config, char *line)
-{
-    int i = 0;
-    char *default_command;
-    while (*line && *line != '[') {
-        line++;
-    }
-    default_command = malloc(sizeof(char) * strlen(line) + 1);
-    while (*line) {
-        if (*line != '[' && *line != ']') {
+        if (*line != '"' && *line != '\n') {
             default_command[i] = *line;
             i++;
         }
         line++;
     }
     config->default_command = default_command;
+}
+
+void submit_handler(t_config *config, char *line)
+{
+    int i = 0;
+    char *submit_key;
+    while (*line && *line != '[') {
+        line++;
+    }
+    submit_key = malloc(sizeof(char) * strlen(line) + 1);
+    while (*line) {
+        if (*line != '[' && *line != ']' && *line != '\n') {
+            submit_key[i] = *line;
+            i++;
+        }
+        line++;
+    }
+    config->submit = submit_key;
     return;
 }
 

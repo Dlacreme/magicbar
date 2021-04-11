@@ -6,6 +6,6 @@
 #include "parser.h"
 #include "ui.h"
 
-int run_command(char*);
+void run_command(char*);
 
 #endif

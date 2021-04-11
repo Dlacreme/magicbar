@@ -1,5 +1,5 @@
 NAME = magic_bar
-CC = clang
+CC = gcc
 PKGCONFIG = $(shell which pkg-config)
 CFLAGS = $(shell $(PKGCONFIG) --cflags gtk4)
 LIBS = $(shell $(PKGCONFIG) --libs gtk4)
