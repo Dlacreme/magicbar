@@ -73,6 +73,41 @@ void submit_handler(t_config *config, char *line)
 
 void favorite_handler(t_config *config, char *line)
 {
-    printf("FAVORITE > [%s]\n", line);
+    int i = 0;
+    t_key_bin *fav_lookup;
+    t_key_bin *fav = malloc(sizeof(t_key_bin));
+    char key;
+    char *command = malloc(sizeof(char) * strlen(line));
+    while (*line && (*line != '-' && *(line + 1) != '>')) {
+        if (*line != '[' && *line != ']') {
+            key = *line;
+            i++;
+        }
+        *line++;
+    }
+    i = 0;
+    line += 2; // skip "->"
+    while (*line) {
+        if (*line != '"') {
+            command[i] = *line;
+            i++;
+        }
+        *line++;
+    }
+    fav->command = command;
+    fav->key = key;
+    fav->next = NULL;
+    if (config->favorite_head == NULL) {
+        config->favorite_head = fav;
+        return;
+    }
+    fav_lookup = config->favorite_head;
+    while (fav_lookup && fav_lookup->next) {
+        fav_lookup = fav_lookup->next;
+    }
+    if (fav_lookup) {
+        fav_lookup->next = fav;
+    }
+
     return;
 }

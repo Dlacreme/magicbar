@@ -8,6 +8,8 @@ typedef struct s_gtk_ui {
     GtkApplication  *app;
     GtkWidget *window;
     GtkWidget *input;
+    GtkWidget *grid;
+    GtkWidget **texts;
 } t_gtk_ui;
 
 typedef struct s_gtk_callback_data {

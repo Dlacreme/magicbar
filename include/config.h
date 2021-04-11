@@ -5,7 +5,7 @@ struct s_key_bin;
 // key bin stores a command and its matching shortcut; used as linked list
 typedef struct s_key_bin {
     char    *command;
-    char    *shortcut;
+    char    key;
     struct s_key_bin*  next;
 } t_key_bin;
 
