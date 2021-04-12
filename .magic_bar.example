@@ -2,11 +2,12 @@ MAGIC BAR FILE EXAMPLE
 Format:
  - Shortcut must be delimited with '[' and ']'
  - Command must be delimited with double quotes (`"`)
-Any invalid lines are ignored by the parser.
+Any invalid lines are ignored by the parser. White spaces are automatically skipped.
 
 Following line set the default application to start to 'terminal'.
 default: "terminal"
 
-You can setup your favorites with the following format
+You can setup your favorites with the following format.
 [f]->"firefox"
-[v]->"visualcode"
+[v]->"terminal -- vi"
+[x]->"xrandr --auto"
