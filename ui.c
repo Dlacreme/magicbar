@@ -74,7 +74,9 @@ GtkWidget* build_input(GtkWidget *window, char *default_value)
 {
     GtkWidget* input;
     input = gtk_entry_new();
-    set_input_content(input, default_value);
+    if (default_value) {
+        set_input_content(input, default_value);
+    }
     gtk_window_set_child(GTK_WINDOW(window), input);
     return input;
 }
