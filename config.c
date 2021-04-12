@@ -57,8 +57,6 @@ t_config parse_config(const char *pathname)
     parser = get_parser();
     fd = fopen(get_config_pathname(pathname), "r");
     if (fd == NULL) {
-        // printf("Error opening '%s' ; ERROR=%d\n", get_config_pathname(pathname), errno);
-        // exit(EXIT_FAILURE);
         // Program should be able to run without a valid config
         return config;
     }
