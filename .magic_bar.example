@@ -4,16 +4,9 @@ Format:
  - Command must be delimited with double quotes (`"`)
 Any invalid lines are ignored by the parser.
 
-@doc"""
-Define the default command to "terminal".
- (REQUIRED for now - set it to "" if you don't use it)
-"""
+Following line set the default application to start to 'terminal'.
 default: "terminal"
 
-@doc"""
-Define the list of favorites using the format [key]->"command"
-"""
+You can setup your favorites with the following format
 [f]->"firefox"
 [v]->"visualcode"
-
-Run `echo 'default: ""' > ~/.magic_bar` for a default valid file
